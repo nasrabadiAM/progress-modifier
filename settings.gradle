@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "progress-modifier"
-include ':app'
+include ":app", ":progress-modifier"
