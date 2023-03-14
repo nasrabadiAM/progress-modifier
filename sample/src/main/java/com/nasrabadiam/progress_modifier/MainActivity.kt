@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,61 +40,91 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun HomeScreen() {
     Column(Modifier.fillMaxSize()) {
-        var firstShapeText by remember { mutableStateOf("") }
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(96.dp)
-                .padding(16.dp)
-                .clip(RoundedCornerShape(16.dp))
-                .background(Color.Red)
-                .progressAnimation(10000) {
-                    firstShapeText = "First Shape animation finished!"
-                }
-        )
-        Text(modifier = Modifier.padding(horizontal = 16.dp), text = firstShapeText)
-
-        var secondShapeText by remember { mutableStateOf("") }
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(96.dp)
-                .padding(16.dp)
-                .clip(CircleShape)
-                .background(Color.Blue)
-                .progressAnimation(durationMillis = 7000) {
-                    secondShapeText = "Second shape animation finished!"
-                }
-        )
-        Text(modifier = Modifier.padding(horizontal = 16.dp), text = secondShapeText)
-
-        var thirdShapeText by remember { mutableStateOf("") }
-        Box(
-            Modifier
-                .width(196.dp)
-                .height(196.dp)
-                .padding(16.dp)
-                .clip(CircleShape)
-                .background(Color.Green)
-                .progressAnimation(durationMillis = 8000, finishedListener = {
-                    thirdShapeText = "Third Shape animation finished!"
-                })
-        )
-        Text(modifier = Modifier.padding(horizontal = 16.dp), text = thirdShapeText)
-
-        var forthShapeText by remember { mutableStateOf("") }
-        Box(
-            Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-                .clip(CutCornerShape(96.dp))
-                .progressAnimation(durationMillis = 4000, finishedListener = {
-                    forthShapeText = "Forth Shape animation finished!"
-                })
-                .background(Color.Yellow),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(modifier = Modifier.padding(horizontal = 16.dp), text = forthShapeText)
-        }
+        ShapeWithRoundedCorner()
+        RectangleShape()
+        CircleShape()
+        PolygonShape()
     }
+}
+@Composable
+private fun ShapeWithRoundedCorner() {
+    var logText by remember { mutableStateOf("Rounded corner animation started!") }
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .height(96.dp)
+            .padding(16.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(Color.Red)
+            .progressAnimation(10000) {
+                logText = "Rounded corner Shape animation finished!"
+            }
+    )
+    FinishedText(logText)
+}
+
+@Composable
+private fun RectangleShape() {
+    var logText by remember { mutableStateOf("Rectangle animation started!") }
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .height(96.dp)
+            .padding(16.dp)
+            .background(Color.Blue)
+            .progressAnimation(durationMillis = 7000) {
+                logText = "Rectangle shape animation finished!"
+            }
+    )
+    FinishedText(logText)
+}
+
+@Composable
+private fun CircleShape() {
+    var logText by remember { mutableStateOf("Circle animation Started!") }
+    Box(
+        Modifier
+            .width(196.dp)
+            .height(196.dp)
+            .padding(16.dp)
+            .clip(CircleShape)
+            .background(Color.Green)
+            .progressAnimation(durationMillis = 8000, finishedListener = {
+                logText = "Circle Shape animation finished!"
+            })
+    )
+    FinishedText(logText)
+}
+
+@Composable
+private fun PolygonShape() {
+    var logText by remember { mutableStateOf("Polygon Animation Started!") }
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .clip(CutCornerShape(96.dp))
+            .progressAnimation(durationMillis = 4000, finishedListener = {
+                logText = "Polygon Shape animation finished!"
+            })
+            .background(Color.Yellow),
+        contentAlignment = Alignment.Center
+    ) {
+        FinishedText(text = logText, textColor = Color.Black)
+    }
+}
+
+@Composable
+private fun FinishedText(text: String, textColor: Color? = null) {
+    val textColorBasedOnTheme = if (isSystemInDarkTheme()) {
+        Color.White
+    } else {
+        Color.Black
+    }
+    val color = textColor ?: textColorBasedOnTheme
+    Text(
+        modifier = Modifier.padding(horizontal = 16.dp),
+        text = text,
+        color = color
+    )
 }
