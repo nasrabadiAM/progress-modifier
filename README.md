@@ -2,10 +2,10 @@
 This is a modifier for drawing a progress over your Composable views.
 
 <video width="240" controls>
-  <source src="./docs/resources/dark-theme.mp4" type="video/mp4">
+  <source src="./docs/resources/dark-theme.webm" type="video/mp4">
 </video> 
 <video width="240" controls>
-  <source src="./docs/resources/light-theme.mp4" type="video/mp4">
+  <source src="./docs/resources/light-theme.webm" type="video/mp4">
 </video> 
 
 
