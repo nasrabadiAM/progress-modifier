@@ -1,13 +1,8 @@
 # Progress Modifier for jetpack compose
 This is a modifier for drawing a progress over your Composable views.
 
-<video width="240" controls>
-  <source src="./docs/resources/dark-theme.webm" type="video/mp4">
-</video> 
-<video width="240" controls>
-  <source src="./docs/resources/light-theme.webm" type="video/mp4">
-</video> 
-
+![](./docs/resources/dark-theme.gif | width=240)
+![](./docs/resources/light-theme.gif | width=240)
 
 To use this progress modifier on your views you can do it this way:
 ```kotlin 
