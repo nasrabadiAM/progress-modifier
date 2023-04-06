@@ -15,9 +15,6 @@ To use this progress modifier on your views you can do it this way:
     )
 
 ```
-
-
-
 you should pass a duration which is a the duration for your progress. then it shows a progress animation on your view till it finished.
 
 
@@ -33,5 +30,16 @@ If you want to be notified when animation finished, you can add callback to it.
     )
 ```
 
-As the [order of modifiers matters](https://developer.android.com/jetpack/compose/modifiers#order-modifier-matters), you should add it after your bakground and clip modifier. 
+Or if you have a percent value and wanna update progress animation with percent value, do it like this:
+```kotlin
+    Box(
+        Modifier
+            //..... other modifiers 
+            .progressAnimation(percent = percent)
+    )
+```
 
+
+As the [order of modifiers matters](https://developer.android.com/jetpack/compose/modifiers#order-modifier-matters), you should always add it after your background and clip modifier. 
+
+Note: using this modifier on `buttons` will not work as they add their shape at the end of modifiers. 
