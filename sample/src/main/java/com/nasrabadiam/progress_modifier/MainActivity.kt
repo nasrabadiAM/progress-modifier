@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
 
@@ -39,13 +41,25 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun HomeScreen() {
+    var percent by remember { mutableStateOf(0f) }
+    LaunchedEffect(Unit) {
+        while (percent < 100) {
+            delay(500)
+            percent += 1
+        }
+    }
+
     Column(Modifier.fillMaxSize()) {
+        //animation with duration sample
         ShapeWithRoundedCorner()
         RectangleShape()
         CircleShape()
         PolygonShape()
+        // progress sample
+        PolygonShapeWithProgress(percent)
     }
 }
+
 @Composable
 private fun ShapeWithRoundedCorner() {
     var logText by remember { mutableStateOf("Rounded corner animation started!") }
@@ -101,12 +115,30 @@ private fun PolygonShape() {
     var logText by remember { mutableStateOf("Polygon Animation Started!") }
     Box(
         Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .height(68.dp)
             .padding(16.dp)
             .clip(CutCornerShape(96.dp))
             .progressAnimation(durationMillis = 4000, finishedListener = {
                 logText = "Polygon Shape animation finished!"
             })
+            .background(Color.Yellow),
+        contentAlignment = Alignment.Center
+    ) {
+        FinishedText(text = logText, textColor = Color.Black)
+    }
+}
+
+@Composable
+private fun PolygonShapeWithProgress(percent: Float) {
+    val logText by remember { mutableStateOf("Polygon Animation With progress Started!") }
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .height(68.dp)
+            .padding(16.dp)
+            .clip(CutCornerShape(96.dp))
+            .progressAnimation(percent = percent)
             .background(Color.Yellow),
         contentAlignment = Alignment.Center
     ) {
