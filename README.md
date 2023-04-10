@@ -46,3 +46,6 @@ There is a series of blog posts about modifiers and creating custom modifiers av
 
 ### Disclaimer
 Note: using this modifier on `buttons` will not work as they add their shape at the end of surface modifiers. 
+
+### contribution
+If you have any ideas that could be applied to buttons or any other ideas, I would appreciate hearing them. Additionally, if you would like to contribute to the development of new features or ..., your contributions are welcome and greatly appreciated.
