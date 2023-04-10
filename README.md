@@ -39,7 +39,10 @@ Or if you have a percent value and wanna update progress animation with percent 
     )
 ```
 
-
 As the [order of modifiers matters](https://developer.android.com/jetpack/compose/modifiers#order-modifier-matters), you should always add it after your background and clip modifier. 
 
-Note: using this modifier on `buttons` will not work as they add their shape at the end of modifiers. 
+### Blog Post 
+There is a series of blog posts about modifiers and creating custom modifiers available [here](https://medium.com/@nasrabadiam/an-introduction-to-create-custom-modifiers-in-jetpack-compose-part-1-modifiers-basics-9868d315d3dc). In the third part of the series, I will discuss this project in more detail and provide additional information about its implementation.
+
+### Disclaimer
+Note: using this modifier on `buttons` will not work as they add their shape at the end of surface modifiers. 
