@@ -66,7 +66,7 @@ fun Modifier.progressAnimation(
 )
 
 private const val ANIMATION_DURATION_IN_MILLIS = 300
-fun Modifier.progressAnimation(
+fun Modifier.progress(
     @FloatRange(0.0, 100.0) percent: Float,
     progressColor: Color = Color.Black,
 ): Modifier = composed(

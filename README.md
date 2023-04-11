@@ -35,7 +35,7 @@ Or if you have a percent value and wanna update progress animation with percent 
     Box(
         Modifier
             //..... other modifiers 
-            .progressAnimation(percent = percent)
+            .progress(percent = percent) //percent is a float range between 0f to 100f
     )
 ```
 

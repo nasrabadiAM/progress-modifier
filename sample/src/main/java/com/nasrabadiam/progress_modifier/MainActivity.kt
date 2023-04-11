@@ -138,7 +138,7 @@ private fun PolygonShapeWithProgress(percent: Float) {
             .height(68.dp)
             .padding(16.dp)
             .clip(CutCornerShape(96.dp))
-            .progressAnimation(percent = percent)
+            .progress(percent = percent)
             .background(Color.Yellow),
         contentAlignment = Alignment.Center
     ) {
