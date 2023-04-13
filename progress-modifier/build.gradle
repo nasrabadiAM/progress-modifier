@@ -4,8 +4,10 @@ plugins {
     id 'maven-publish'
 }
 
+def progressVersion = new File(System.getProperty('progress-version'))
+
 group = 'com.github.nasrabadiam'
-version = "1.0.0-alpha09"
+version = progressVersion
 
 android {
     namespace 'com.nasrabadiam.progress_modifier'
@@ -15,7 +17,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0.0-alpha09"
+        versionName "1.0.0-alpha10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,4 +49,17 @@ dependencies {
     def composeVersion = "1.3.3"
     implementation "androidx.compose.ui:ui:$composeVersion"
     implementation "androidx.compose.animation:animation-core:$composeVersion"
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.nasrabadiam'
+                artifactId = 'progress_modifier'
+                version = progressVersion
+            }
+        }
+    }
 }
