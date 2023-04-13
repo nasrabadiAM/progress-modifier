@@ -1,7 +1,10 @@
 plugins {
     id "com.android.library"
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
+
+group='com.github.nasrabadiam'
 
 android {
     namespace 'com.nasrabadiam.progress_modifier'
@@ -11,7 +14,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0-alpha01"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
