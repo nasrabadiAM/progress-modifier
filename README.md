@@ -10,10 +10,10 @@ This is a modifier for drawing a progress over your Composable views.
 Add it in your root build.gradle at the end of repositories:
 
 ```groovy
-    allprojects {
+allprojects {
     repositories {
         ...
-        maven { url 'https://jitpack.io' }
+        maven { url "https://jitpack.io" }
     }
 }
 ```
@@ -21,10 +21,11 @@ Add it in your root build.gradle at the end of repositories:
 Then add the dependency:
 
 ```groovy
-    dependencies {
-    implementation 'com.github.nasrabadiam:progress-modifier:Tag'
+dependencies {
+    implementation "com.github.nasrabadiam:progress-modifier:version"
 }
 ```
+
 
 ### Usage
 To use this progress modifier on your views you can do it this way:
