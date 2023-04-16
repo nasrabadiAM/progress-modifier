@@ -22,7 +22,7 @@ Then add the dependency:
 
 ```groovy
 dependencies {
-    implementation "com.github.nasrabadiam:progress-modifier:version"
+    implementation "com.github.nasrabadiam:progress-modifier:1.0.0"
 }
 ```
 
